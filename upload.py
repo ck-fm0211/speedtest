@@ -28,5 +28,5 @@ if __name__ == "__main__":
 
     with open(f'output/{filename}', encoding='utf-8', newline='') as f:
         for cols in csv.reader(f, delimiter='\t'):
-            worksheet.append_row(cols) # dataを最終行に挿入
+            worksheet.append_row(cols, value_input_option='USER_ENTERED') # dataを最終行に挿入
 
