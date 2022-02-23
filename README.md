@@ -15,7 +15,11 @@ export SERVICE_ACCOUNT_JSON_PATH="path/to/google-service-account.json" # GCPサ�
 export SPREADSHEET_KEY="xxx" # spreadsheetキー
 export WORKSHEET_NAME="speedtest" # スプレッドシート シート名
 
-bash run.sh
+bash run.sh 稼動マシン名 ISP名 ネットワークインターフェースID
+```
+`ネットワークインターフェースID`は実行マシンのNICに合わせた値。以下のコマンドで確認。
+```
+speedtest -f json-pretty | jq .interface.name
 ```
 
 # Note
