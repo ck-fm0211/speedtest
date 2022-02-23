@@ -30,8 +30,10 @@ echo "== exec speedtest =="
 speedtest -L | grep "OPEN Project" | awk '{print $1}' > output/${SERVER_ID}
 if [ ! -s $FILE ]; then
     #OPEN Projectが存在しない場合はサーバーを指定しない
+    echo "  use any server"
     speedtest -f json -I ${NETWORK_INTERFACE_ID}  > output/${RESULT_FILENAME_JSON}
 else
+    echo "  use OPEN PROJECT server"
     cat output/${SERVER_ID} | xargs -I{} speedtest -f json -s {} -I ${NETWORK_INTERFACE_ID}  > output/${RESULT_FILENAME_JSON}
 fi
 
