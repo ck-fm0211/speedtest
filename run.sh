@@ -26,7 +26,7 @@ RESULT_FILENAME_TSV=result_${MACHINE}_${ISP}_${NETWORK_INTERFACE_ID}_${NOW}.tsv
 
 # speedtestの結果を出力
 echo "== exec speedtest =="
-speedtest -L | grep "OPEN Project" | awk '{print $1}' | xargs -I{} speedtest -f json -s {} > output/${RESULT_FILENAME_JSON}
+speedtest -L | grep "OPEN Project" | awk '{print $1}' | xargs -I{} speedtest -f json -s {} -I ${NETWORK_INTERFACE_ID}  > output/${RESULT_FILENAME_JSON}
 
 echo "== parse result =="
 cat output/${RESULT_FILENAME_JSON} \
