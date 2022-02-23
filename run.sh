@@ -31,7 +31,7 @@ speedtest -L | grep "OPEN Project" | awk '{print $1}' | xargs -I{} speedtest -f 
 echo "== parse result =="
 cat output/${RESULT_FILENAME_JSON} \
 | jq -r '. | [(.timestamp | strptime("%Y-%m-%dT%H:%M:%SZ") | mktime + (60 * 60 * 9) | strftime("%F %X")), .ping.jitter, .ping.latency, .download.bandwidth, .download.bytes, .download.elapsed, .upload.bandwidth, .upload.bytes, .upload.elapsed, .packetLoss] | @tsv' \
-| awk -v m=${MACHINE} -v i=${ISP} -v n=$NETWORK_INTERFACE_ID -F "\t" 'BEGIN{OFS="\t"}{$NF=$NF"\t"m"\t"i"\t"n;print}'
+| awk -v m=${MACHINE} -v i=${ISP} -v n=$NETWORK_INTERFACE_ID -F "\t" 'BEGIN{OFS="\t"}{$NF=$NF"\t"m"\t"i"\t"n;print}' \
 > output/${RESULT_FILENAME_TSV}
 
 echo "== upload =="
