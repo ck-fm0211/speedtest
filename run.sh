@@ -7,9 +7,9 @@ MACHINE=$1  # 稼動マシン
 ISP=$2  # 接続ISP
 NETWORK_INTERFACE_ID=$3  # ネットワークインタフェースID
 
-if [ $1 = "en0" ]; then
+if [ ${NETWORK_INTERFACE_ID} = "en0" ]; then
     NETWORK_INTERFACE_NAME="Ethernet"
-elif [ $1 = "en1" ]; then
+elif [ ${NETWORK_INTERFACE_ID} = "en1" ]; then
     NETWORK_INTERFACE_NAME="Wi-Fi"
 else
     NETWORK_INTERFACE_NAME=""
