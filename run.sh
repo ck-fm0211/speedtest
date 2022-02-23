@@ -28,7 +28,7 @@ SERVER_ID=server_id_${MACHINE}_${ISP}_${NETWORK_INTERFACE_ID}_${NOW}.txt
 # speedtestの結果を出力
 echo "== exec speedtest =="
 speedtest -L | grep "OPEN Project" | awk '{print $1}' > output/${SERVER_ID}
-if [ ! -s $FILE ]; then
+if [ ! -s output/${SERVER_ID} ]; then
     #OPEN Projectが存在しない場合はサーバーを指定しない
     echo "  use any server"
     speedtest -f json -I ${NETWORK_INTERFACE_ID}  > output/${RESULT_FILENAME_JSON}
